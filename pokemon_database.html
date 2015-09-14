@@ -1,0 +1,10 @@
+<div class="col-md-1" ng-repeat="creature in pokedex.creatures | orderBy:'national_id' | limitTo:50">
+<!--<div>-->
+    <h3> {{creature.name}} </h3>
+<!--    <p> {{creature.resource_uri}} </p>-->
+    <p>National ID: {{creature.national_id}}</p>
+    <p>Type 1: {{creature.types}}</p>
+    <p>Type 2: {{creature.types2}}</p>
+
+    <img class="img-thumbnail" ng-src="{{creature.sprite}}">
+</div>

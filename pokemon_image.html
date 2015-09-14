@@ -1,0 +1,6 @@
+<div ng-repeat="creature in pokedex.creatures | orderBy:'resource_uri'">
+<!--<div>-->
+    <h3> {{creature.name}} </h3>
+    <p> {{creature.resource_uri}} </p>
+<!--    <img class="image" ng-src="{{'http://pokeapi.co' + creature.image}}">-->
+</div>
