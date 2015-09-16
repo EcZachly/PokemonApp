@@ -25,16 +25,6 @@
     app.controller("PokemonController", ["$http", function ($http) {
         this.creatures = pokedex;
         
-        
-//        var creatures = this;
-        
-//        pokedex.creatures = [];
-        
-//        $http.get("http://pokeapi.co/api/v1/pokedex/1/").success(function(data){
-//            pokedex.creatures = data;
-//        })
-        
-//        console.log(pokedex);
     }]);
     
     app.directive("pokemonNameImage", function () {
@@ -72,20 +62,13 @@
             restrict: "E",
             templateUrl: "pokemon_database.html",
             controller: function ($http) {
-//                this.creatures = pokedex;
-                var pokedex = this;
-//                $scope.quantity:5
-//                var pokemonData;
-//                pokedex.creatures = [];
-//                pokemonData.stats = [];
-                // for (x = 1; x < 2; x++) {
+              var pokedex = this;
+
                     var temp = [];
                     
                     for (var i = 1; i < 5; i++) {
                         $http({url: "http://pokeapi.co/api/v1/pokemon/" + i + "/", method: "GET"}).success(function(data){
                             console.log(data)
-
-                            // var temp = [];
                             temp.push(data)
     //                        pokedex.creatures.national_id = data.national_id;
     //                        pokedex.creatures.sprite = "http://pokeapi.co/media/img/" + data.national_id + ".png";

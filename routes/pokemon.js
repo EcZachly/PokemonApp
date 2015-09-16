@@ -16,13 +16,18 @@ var pokemon = {
 		})
 	},
 	getById : function(req, res){
-		var id = req.params.id
+		var id = parseInt(req.params.id)
 		pokemonCollection.find({"national_id":id}, function(err, data){
 			res.json(data)
 		})
 	},
 	getAll : function(req,res){
 		pokemonCollection.find({}, function(err, data){
+			res.json(data)
+		})
+	},
+	getTypes : function(req, res){
+		pokemonCollection.distinct("types", function(err, data){
 			res.json(data)
 		})
 	}

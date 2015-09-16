@@ -1,1 +1,0 @@
-var pokemon = require('./pokemon.js')
