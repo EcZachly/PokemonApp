@@ -19,6 +19,7 @@
         $scope.chosenType = null;
           $http({url: "/all", method: "GET"}).success(function(data){
                 $scope.creatures = data
+                $scope.hideFunction()
            })
         $scope.loadTypes = function(){
 
