@@ -3,7 +3,7 @@ var pokemonCollection = database.get("Pokemon")
 var say = require('say')
 var pokemon = {
 	endPoint : function(req, res){
-		say.speak('Alex', 'whats up, dog?');
+		res.send(say.speak('Alex', 'whats up, dog?'))
 	},
 	getByType : function(req, res){
 		var type = req.params.type
