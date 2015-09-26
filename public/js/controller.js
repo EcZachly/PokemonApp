@@ -118,18 +118,32 @@ pokeAppController.controller("pokeAppController", ["$scope", "$http", "$routePar
 pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$routeParams",
     function($scope, $http, $routeParams){
         var id = $routeParams.id
-
         $http({url: "/pokemon/id/" + id, method: "GET"}).success(function(data){
-            $scope.pokedexEntry = data[0] 
-
+            $scope.pokedexEntry = data[0]
+            
+            var nextID = parseInt(id) + 1
+            if (nextID > 718) {
+                nextID = 1
+            }
+            $http({url: "/pokemon/id/" + nextID, method: "GET"}).success(function(data){
+                $scope.pokedexEntry.nextID = nextID
+                $scope.pokedexEntry.nextPokemon = data[0].name
+            })
+            var previousID = parseInt(id) - 1
+            if (previousID < 1) {
+                previousID = 718
+            }
+            $http({url: "/pokemon/id/" + previousID, method: "GET"}).success(function(data){
+                $scope.pokedexEntry.previousID = previousID
+                $scope.pokedexEntry.previousPokemon = data[0].name
+            })
             $scope.pokedexEntry.cry = "/sounds/" + id + ".wav"
             $http({url:"/moves/pokemon/" + data[0].name, method: "GET"}).success(function(data2){
-                console.log(data2)
+//                console.log(data2)
                 $scope.pokedexEntry.moves = data2
 
             })
         })
-
 
     
 

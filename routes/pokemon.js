@@ -1,6 +1,5 @@
 var database = require("./database.js")
 var pokemonCollection = database.get("Pokemon")
-var say = require('say')
 var pokemon = {
 	getByType : function(req, res){
 		var type = req.params.type

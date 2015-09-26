@@ -46,8 +46,127 @@ h3 {
 .infoText {
     font-size: 1.75em;
     line-height: 75%;
+    clear: both;
 }
 
 .description {
     font-size: 2em;
+    margin-bottom: 50px;
+}
+
+.badge.poison {
+    background: #ba7fca;
+    color: black;
+}
+
+.badge.bug {
+    background: #73a435;
+    color: black;
+}
+
+.badge.dragon {
+    background: #f16e57;
+    color: black;
+}
+
+.badge.fairy {
+    background: #febaea;
+    color: black;
+}
+
+.badge.fire {
+    background: #fe7e24;
+    color: black;
+}
+
+.badge.ghost {
+    background: #7b62a4;
+    color: black;
+}
+
+.badge.ground {
+    background: #ac9942;
+    color: black;
+}
+
+.badge.normal {
+    background: #a4adaf;
+    color: black;
+}
+
+.badge.psychic {
+    background: #f367ba;
+    color: black;
+}
+
+.badge.steel {
+    background: #9fb8b8;
+    color: black;
+}
+
+.badge.dark {
+    background: #717171;
+    color: black;
+}
+
+.badge.electric {
+    background: #efd535;
+    color: black;
+}
+
+.badge.fighting {
+    background: #d66723;
+    color: black;
+}
+
+.badge.flying {
+    background: #8CD3E9;
+    color: black;
+}
+
+.badge.ice {
+    background: #3AC0E9;
+    color: white;
+}
+
+.badge.water {
+    background: #4592c5;
+    color: black;
+}
+
+.badge.rock {
+    background: #a48c21;
+    color: black;
+}
+
+.badge.grass {
+    background: #9ccd50;
+    color: black;
+}
+
+.badge {
+    padding: 10px;
+    width: 100px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.navigationButtons {
+    width: 100%;
+    height: 25px;
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+    clear: both;
+}
+
+.backwards {
+    float: left;
+}
+
+.forwards {
+    float: right;
 }

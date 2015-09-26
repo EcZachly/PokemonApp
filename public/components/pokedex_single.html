@@ -2,22 +2,32 @@
     
 </div>    
 
+<div class="navigationButtons col-md-12">
+    <a ng-href="/views/index.html#/pokedexID/{{pokedexEntry.previousID}}"><button class="btn backwards btn">{{pokedexEntry.previousPokemon}}</button></a>
+    <a ng-href="/views/index.html#/pokedexID/{{pokedexEntry.nextID}}"><button class="btn forwards btn">{{pokedexEntry.nextPokemon}}</button></a>
+<!--    <button class="btn forwards btn" ng-href="/views/index.html#/pokedexID/{{pokedexEntry.nextID}}">{{pokedexEntry.nextPokemon}}</button>-->
+<!--    <button class="btn forwards btn">Forwards</button>-->
+</div>
+
 <div class="col-md-8 pokedexImage media">
     <img class="center-block pokemonSprite" ng-src="{{pokedexEntry.profile_image}}">
 </div>
 
 <div class="col-md-4 pokeDexInfo">
-    <h1 class="display-1">{{pokedexEntry.adjustedID}}<br>{{pokedexEntry.name}}</h1>
+    <h1 class="display-1">#{{pokedexEntry.national_id}}<br>{{pokedexEntry.name}}</h1>
     <p class="infoText lead">{{pokedexEntry.category}}</p>
     <br>
     
-    <div class="button col-md-4" ng-repeat="type in pokedexEntry.types">{{type.name}}</div>
+    <div class="badge {{type.name}} col-md-4" ng-class=""ng-repeat="type in pokedexEntry.types">{{type.name}}</div>
     <br>
     <!--<img class="img-thumbnail pokemonSprite" ng-src="{{'/images/sprites/' + pokedexEntry.national_id + '.png'}}">-->
     <p class="infoText lead">HT   {{pokedexEntry.height}}</p>
     <p class="infoText lead">WT   {{pokedexEntry.weight}}</p>
     <audio id="cry" ng-src="{{pokedexEntry.cry}}" type="audio/mp3"> </audio>
-    <button onclick="playVid()">Cry</button>
+    <button class="btn button" onclick="playVid()">
+        Cry
+<!--    <span class="glyphicon glyphicon-play"></span>-->
+    </button>
 </div>
 
 <div class="col-md-12 pokedexDescription">

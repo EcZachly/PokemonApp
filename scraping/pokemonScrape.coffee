@@ -5,12 +5,11 @@ request = require('request')
 database = require("../routes/database.js")
 pokemonCollection = database.get("Pokemon")
 
-pokemonCollection.find({}, (err, data) ->
+pokemonCollection.find({"name": "Nidoran-f"}, (err, data) ->
 	data.forEach((v)->
+		
 		name = v.name
-		if(name.indexOf("-") >= 0)
-			name = name.substring(0, name.indexOf("-"))
-
+		name = "Nidoran-Female"
 		url = "http://www.pokemon.com/us/pokedex/" + name.toLowerCase()
 		request(url, (err, req, data)->
 			$ = cheerio.load(data)
@@ -21,7 +20,9 @@ pokemonCollection.find({}, (err, data) ->
 			v.weight = array.substring(array.indexOf("Weight") + 6, array.indexOf("Gender"))
 			v.category = $('div[class="column-7 push-7"]').children('ul').children('li').children('span').text()
 			v.category = v.category.substring(8, v.category.indexOf("Abilities"))
-			pokemonCollection.update({name:v.name}, v, (err, data)->
+			console.log(v)
+			v.name = "Nidoran-f"
+			pokemonCollection.update({name:"Nidoran-f"}, v, (err, data)->
 				console.log("UPDATED " + v.name)
 
 			)
