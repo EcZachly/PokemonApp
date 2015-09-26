@@ -1,6 +1,10 @@
 var database = require("./database.js")
 var pokemonCollection = database.get("Pokemon")
+var say = require('say')
 var pokemon = {
+	endPoint : function(req, res){
+		say.speak('Alex', 'whats up, dog?');
+	},
 	getByType : function(req, res){
 		var type = req.params.type
 		var regex = new RegExp('^' + type, 'gi')
@@ -23,6 +27,12 @@ var pokemon = {
 	},
 	getAll : function(req,res){
 		pokemonCollection.find({}, function(err, data){
+			res.json(data)
+		})
+	},
+	getByGeneration: function(req, res){
+		var gen = req.params.generation
+		pokemonCollection.find({"generation": gen}, function(err, data){
 			res.json(data)
 		})
 	},

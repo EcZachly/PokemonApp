@@ -7,14 +7,21 @@ pokeAppController.controller("pokeAppController", ["$scope", "$http", "$routePar
         $scope.options = ["All", "1","2","3","4","5", "6"]
         $scope.order = [{name:"Alphabetical", value:"name"}, {name:"Reverse Alphabetical", value:"-name"}, {name:"ID", value:"national_id"}, {name:"Reverse ID", value:"-national_id"}];
         $scope.creatures = []
-        $scope.chosenOption = "Generation 1"
+        $scope.chosenOption = "1"
         $scope.chosenType = "All";
 
-        $http({url: "/all", method: "GET"}).success(function(data){
+        $http({url: "/pokemon/generation/1", method: "GET"}).success(function(data){
             $scope.creatures = data
             $scope.hideFunction()
         })
-
+        //load data in background
+        $http({url: "/all", method: "GET"}).success(function(data){
+            data.forEach(function(v){
+                if(v.generation != "1"){
+                    $scope.creatures.push(v)
+                }
+            })
+        })
 
         var typesOne = []
         var typesTwo = []
@@ -111,23 +118,11 @@ pokeAppController.controller("pokeAppController", ["$scope", "$http", "$routePar
 pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$routeParams",
     function($scope, $http, $routeParams){
         var id = $routeParams.id
-        var descriptionLink;
-        $http({url: "/id/" + id, method: "GET"}).success(function(data){
-            $scope.pokedexEntry = data[0]
-            descriptionLink = $scope.pokedexEntry.descriptions[0].resource_uri
-            var unadjustedID = $scope.pokedexEntry.national_id
-            if (unadjustedID < 10) {
-                $scope.pokedexEntry.adjustedID = "00" + unadjustedID
-                console.log($scope.pokedexEntry.adjustedID)
-            } else if (unadjustedID < 100) {
-                $scope.pokedexEntry.adjustedID = "0" + unadjustedID
-                console.log($scope.pokedexEntry.adjustedID)
-            } else {
-                $scope.pokedexEntry.adjustedID = unadjustedID
-                console.log($scope.pokedexEntry.adjustedID)
-            }
-            $http({url: "http://pokeapi.co" + descriptionLink, method: "GET"}).success(function(data){
-                $scope.pokedexEntry.officialDescription = data.description
+        $http({url: "/pokemon/id/" + id, method: "GET"}).success(function(data){
+            $scope.pokedexEntry = data[0] 
+            $http({url:"/moves/pokemon/" + data[0].name, method: "GET"}).success(function(data2){
+                console.log(data2)
+                $scope.pokedexEntry.moves = data2
             })
         })
     }]);

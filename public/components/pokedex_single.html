@@ -3,19 +3,19 @@
 </div>    
 
 <div class="col-md-8 pokedexImage media">
-    <img class="center-block pokemonSprite" ng-src="{{'http://assets22.pokemon.com/assets/cms2/img/pokedex/full/' + pokedexEntry.adjustedID + '.png'}}">
+    <img class="center-block pokemonSprite" ng-src="{{pokedexEntry.profile_image}}">
 </div>
 
 <div class="col-md-4 pokeDexInfo">
     <h1 class="display-1">{{pokedexEntry.adjustedID}}<br>{{pokedexEntry.name}}</h1>
-    <p class="infoText lead">{{pokedexEntry.species}}</p>
+    <p class="infoText lead">{{pokedexEntry.category}}</p>
     <br>
     
     <div class="button col-md-4" ng-repeat="type in pokedexEntry.types">{{type.name}}</div>
     <br>
     <!--<img class="img-thumbnail pokemonSprite" ng-src="{{'/images/sprites/' + pokedexEntry.national_id + '.png'}}">-->
-    <p class="infoText lead">HT   {{pokedexEntry.height}}m</p>
-    <p class="infoText lead">WT   {{pokedexEntry.weight}}kg</p>
+    <p class="infoText lead">HT   {{pokedexEntry.height}}</p>
+    <p class="infoText lead">WT   {{pokedexEntry.weight}}</p>
 </div>
 
 <div class="col-md-12 pokedexDescription">

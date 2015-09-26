@@ -7,6 +7,7 @@
     "start": "node ./serverSideCode/server.js"
   },
   "dependencies": {
+    "say":"0.6.0",
     "contextify":"0.1.14",
     "jsdom":"3.0.0",
     "nvd3":"1.1.15",
