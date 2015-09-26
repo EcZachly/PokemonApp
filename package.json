@@ -31,7 +31,8 @@
     "promise":"6.1.0",
     "request": "2.44.0",
     "mongodb": "1.4.33",
-    "coffee-script": "1.6.1"
+    "coffee-script": "1.6.1",
+    "angular-route": "~1.4.0"
   },
   "engines": {
     "node": "0.12.0",

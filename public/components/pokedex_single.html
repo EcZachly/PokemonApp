@@ -1,0 +1,57 @@
+<div class="col-md-12 pokedexTopbar">
+    
+</div>    
+
+<div class="col-md-8 pokedexImage media">
+    <img class="center-block pokemonSprite" ng-src="{{'http://assets22.pokemon.com/assets/cms2/img/pokedex/full/' + pokedexEntry.adjustedID + '.png'}}">
+</div>
+
+<div class="col-md-4 pokeDexInfo">
+    <h1 class="display-1">{{pokedexEntry.adjustedID}}<br>{{pokedexEntry.name}}</h1>
+    <p class="infoText lead">{{pokedexEntry.species}}</p>
+    <br>
+    
+    <div class="button col-md-4" ng-repeat="type in pokedexEntry.types">{{type.name}}</div>
+    <br>
+    <!--<img class="img-thumbnail pokemonSprite" ng-src="{{'/images/sprites/' + pokedexEntry.national_id + '.png'}}">-->
+    <p class="infoText lead">HT   {{pokedexEntry.height}}m</p>
+    <p class="infoText lead">WT   {{pokedexEntry.weight}}kg</p>
+</div>
+
+<div class="col-md-12 pokedexDescription">
+    <p class="description lead">{{pokedexEntry.officialDescription}}</p>
+</div>
+
+<br>
+<div class="col-md-12 movesetTable">
+    <h2 class="display-1">Moveset</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Move Name</th>
+                <th>Learn Type</th>
+                <th>Level</th>
+            </tr>
+        </thead>
+        
+        <tbody>   
+            <tr ng-repeat="move in pokedexEntry.moves | orderBy: ['learn_type','level','name']">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{move.name}}</td>
+                <td>{{move.learn_type}}</td>
+                <td>{{move.level}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--
+<p>Evolutions</p>
+<div ng-repeat="evolution in pokedexEntry.evolutions">
+    <p>{{evolution.to}}</p>
+</div>
+-->
+<div class="col-md-12 pokedexFooter">
+    <a ng-href="/views/index.html#/all">back</a>
+</div>

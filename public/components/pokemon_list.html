@@ -1,1 +1,42 @@
-<option>{{creature.name}}</option>
+<h1>Pokemon</h1>
+
+<div>
+    <label for="generation">Generation</label>
+    <select name="generation" ng-init="myselect = options[1]" ng-options="o as o for o in options" ng-model="myselect" ng-change="onChange(myselect)" id="selectGeneration"></select>
+
+    <br>
+    <label for="types">First Type</label>
+    <select name="types" ng-init="selector = options[0]" ng-options="o as o for o in types" ng-model="selector" ng-change="changedType(selector)"></select>
+
+    <br>
+<!--
+    <label for="secondTypes">Second Type</label>
+    <select name="secondTypes" ng-init="selector2 = options[0]" ng-options="o as o for o in secondTypes" ng-model="selector2" ng-change="changedSecondType(selector2)"></select>
+    <br>
+-->
+
+    <br>
+    <label for="textSearch">Filter By Name</label>
+    <input name="textSearch" type="text" ng-model="query.name">
+    <br>    
+
+    <label for="orderProp">Order</label>
+    <select name="orderProp" ng-init="orderProp = options[0]" ng-options="o.value as o.name for o in order" ng-model="orderProp">
+    <br>
+
+    </select>
+</div>
+
+<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 pokemonSquare" ng-show="creature.show == true"  ng-repeat="creature in creatures | orderBy: orderProp | filter: query">
+
+    <h3> {{creature.name}} </h3>
+
+    <p>National ID: {{creature.national_id}}</p>
+
+    <p class="type">Type 1: {{creature.types[0].name}}</p>
+
+    <p ng-hide="creature.hideType == true" class="secondType">Type 2: {{creature.types[1].name}}</p>
+
+    <a ng-href="/views/index.html#/pokedexID/{{creature.national_id}}"><img class="img-thumbnail pokemonSprite" ng-src="{{'/images/sprites/' + creature.national_id + '.png'}}"></a>
+
+</div>
