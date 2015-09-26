@@ -118,11 +118,19 @@ pokeAppController.controller("pokeAppController", ["$scope", "$http", "$routePar
 pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$routeParams",
     function($scope, $http, $routeParams){
         var id = $routeParams.id
+
         $http({url: "/pokemon/id/" + id, method: "GET"}).success(function(data){
             $scope.pokedexEntry = data[0] 
+
+            $scope.pokedexEntry.cry = "/sounds/" + id + ".wav"
             $http({url:"/moves/pokemon/" + data[0].name, method: "GET"}).success(function(data2){
                 console.log(data2)
                 $scope.pokedexEntry.moves = data2
+
             })
         })
+
+
+    
+
     }]);

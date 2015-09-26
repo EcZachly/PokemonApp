@@ -16,10 +16,12 @@
     <!--<img class="img-thumbnail pokemonSprite" ng-src="{{'/images/sprites/' + pokedexEntry.national_id + '.png'}}">-->
     <p class="infoText lead">HT   {{pokedexEntry.height}}</p>
     <p class="infoText lead">WT   {{pokedexEntry.weight}}</p>
+    <audio id="cry" ng-src="{{pokedexEntry.cry}}" type="audio/mp3"> </audio>
+    <button onclick="playVid()">Cry</button>
 </div>
 
 <div class="col-md-12 pokedexDescription">
-    <p class="description lead">{{pokedexEntry.officialDescription}}</p>
+    <p class="description lead">{{pokedexEntry.description}}</p>
 </div>
 
 <br>
@@ -45,6 +47,13 @@
         </tbody>
     </table>
 </div>
+
+<script>
+var audio = document.getElementById("cry")
+function playVid() { 
+    audio.play()
+} 
+</script>
 
 <!--
 <p>Evolutions</p>

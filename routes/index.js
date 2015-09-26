@@ -4,8 +4,6 @@ var move = require('./moves.js')
 
 var express = require('express')
 var router = express.Router()
-// var auth = require('./auth.js')
-router.get('/endpoint', pokemon.endPoint)
 
 router.get('/pokemon/type/:type', pokemon.getByType)
 router.get('/pokemon/id/:id', pokemon.getById)
