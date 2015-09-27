@@ -31,8 +31,8 @@ h3 {
     margin-bottom: 10px;
 }
 .pokedexTopbar {
-    height: 5px;
-    background: #E3350D;
+/*    height: 5px;*/
+    
 }
 
 .pokeDexInfo {
@@ -165,8 +165,70 @@ h3 {
 
 .backwards {
     float: left;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 .forwards {
     float: right;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.navButton {
+    background: #fafafa;
+    border: #0274d8 2px solid;
+/*    border: #e3350d 2px solid*/
+/*    border: #4dad54 2px solid*/
+}
+
+.navButton.homeButton {
+    border: none;
+    font-size: 1.5em;
+    font-weight: 200;
+    float: left;
+}
+
+.pokedexNavbar {
+/*    Height: 75px;*/
+}
+
+.red {
+    background: #E3350D;
+    height: 8px;
+}
+
+.blue {
+    background: #0274d8;
+    height: 4px;
+    margin-bottom: 1px;
+}
+
+.green {
+    background: #4dad5a;
+    height: 13px;
+    margin-bottom: 1px;
+}
+
+.homeButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.searchBarDiv {
+    height: 48px;
+    float: right;
+    margin-top: 10px;
+}
+
+.searchBarDiv label {
+    font-size: 1.5em;
+    font-weight: 200;
+}
+
+.searchBarDiv input {
+    font-size: 1.5em;
+    margin-left: 10px;
+    padding: 5px;
+    font-weight: 200;
 }

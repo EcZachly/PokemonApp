@@ -1,6 +1,8 @@
 var pokeAppController = angular.module("pokeAppController", []);
 var pokedexAppController = angular.module("pokedexAppController", []);
 
+
+
 pokeAppController.controller("pokeAppController", ["$scope", "$http", "$routeParams",
     function ($scope, $http, $routeParams) {
 
@@ -115,11 +117,25 @@ pokeAppController.controller("pokeAppController", ["$scope", "$http", "$routePar
         }
 }]);
 
-pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$routeParams",
-    function($scope, $http, $routeParams){
+
+
+pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$routeParams", "$location",
+    function($scope, $http, $routeParams, $location){
         var id = $routeParams.id
-        $http({url: "/pokemon/id/" + id, method: "GET"}).success(function(data){
+        
+        var url = ""
+        var name = $routeParams.name
+        if (id != undefined) {
+            url = "/pokemon/id/" + id
+        } else {
+            url = "/pokemon/exactName/" + name
+        }
+        $http({url: url, method: "GET"}).success(function(data){
             $scope.pokedexEntry = data[0]
+            if (data.length == 0) {
+                $location.path('/all')
+            }
+            id = data[0].national_id
             
             var nextID = parseInt(id) + 1
             if (nextID > 718) {
@@ -143,8 +159,15 @@ pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$ro
                 $scope.pokedexEntry.moves = data2
 
             })
+            $scope.searchEnter = function(keyEvent, val) {
+                if (keyEvent.which === 13) {
+//                    console.log(arguments)    
+                    $location.path("/pokedex/" + val)
+//                    console.log(JSON.stringify(keyEvent))
+//                    alert(keyEvent);
+//                    console.log(Object.keys(keyEvent))
+//                    console.log(Object.keys(keyEvent))
+                }
+            }
         })
-
-    
-
     }]);

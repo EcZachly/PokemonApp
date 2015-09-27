@@ -8,6 +8,8 @@ var pokemonApp = angular.module('pokemonApp', [
     'pokedexAppController'
 ]);
 
+
+
 pokemonApp.config(["$routeProvider",
   function($routeProvider) {
       $routeProvider.
@@ -17,7 +19,7 @@ pokemonApp.config(["$routeProvider",
         }).
         when('/pokedex/:name', {
             templateUrl: "/components/pokedex_single.html",
-          controller: "pokedexAppController"
+            controller: "pokedexAppController"
         }).
         when('/pokedexID/:id', {
           templateUrl: "/components/pokedex_single.html",

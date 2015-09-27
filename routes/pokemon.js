@@ -15,6 +15,13 @@ var pokemon = {
 			res.json(data)
 		})
 	},
+    getByExactName : function(req, res){
+		var name = req.params.name
+        var regex = new RegExp(["^", name, "$"].join(""), "i");
+		pokemonCollection.find({"name":regex}, function(err, data){
+			res.json(data)
+		})
+	},
 	getById : function(req, res){
 		var id = parseInt(req.params.id)
 		pokemonCollection.find({"national_id":id}, function(err, data){

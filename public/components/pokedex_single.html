@@ -1,12 +1,18 @@
-<div class="col-md-12 pokedexTopbar">
-    
-</div>    
+
+<div class="col-md-12 pokedexNavbar">
+    <a ng-href="/views/index.html#/all"><button class="btn homeButton navButton">Home</button></a>
+    <div class="searchBarDiv">
+        <label for="searchBar">Search Pokemon</label>
+        <input name="searchBar" type="text" ng-model="searchBar" ng-keypress="searchEnter($event, searchBar)">
+    </div>
+</div>
+
+<div class="col-md-12 pokedexTopbar blue"></div>
+<div class="col-md-12 pokedexTopbar red"></div>
 
 <div class="navigationButtons col-md-12">
-    <a ng-href="/views/index.html#/pokedexID/{{pokedexEntry.previousID}}"><button class="btn backwards btn">{{pokedexEntry.previousPokemon}}</button></a>
-    <a ng-href="/views/index.html#/pokedexID/{{pokedexEntry.nextID}}"><button class="btn forwards btn">{{pokedexEntry.nextPokemon}}</button></a>
-<!--    <button class="btn forwards btn" ng-href="/views/index.html#/pokedexID/{{pokedexEntry.nextID}}">{{pokedexEntry.nextPokemon}}</button>-->
-<!--    <button class="btn forwards btn">Forwards</button>-->
+    <a ng-href="/views/index.html#/pokedexID/{{pokedexEntry.previousID}}"><button class="btn backwards navButton">{{pokedexEntry.previousPokemon}}</button></a>
+    <a ng-href="/views/index.html#/pokedexID/{{pokedexEntry.nextID}}"><button class="btn forwards navButton">{{pokedexEntry.nextPokemon}}</button></a>
 </div>
 
 <div class="col-md-8 pokedexImage media">
@@ -18,7 +24,7 @@
     <p class="infoText lead">{{pokedexEntry.category}}</p>
     <br>
     
-    <div class="badge {{type.name}} col-md-4" ng-class=""ng-repeat="type in pokedexEntry.types">{{type.name}}</div>
+    <div class="badge {{type.name}} col-md-4" ng-class="" ng-repeat="type in pokedexEntry.types">{{type.name}}</div>
     <br>
     <!--<img class="img-thumbnail pokemonSprite" ng-src="{{'/images/sprites/' + pokedexEntry.national_id + '.png'}}">-->
     <p class="infoText lead">HT   {{pokedexEntry.height}}</p>
