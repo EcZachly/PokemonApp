@@ -18,9 +18,24 @@
 </head>
     
 <body>
-
-    <div class="container" ng-view></div>
     
+<div class="container">
+    <h1 class="display-1 pageTitle">Pokemon</h1>
+<div class="col-md-12 pokedexNavbar" ng-controller="navBarController">
+    <a ng-href="/views/index.html#/all"><button class="btn homeButton navButton">Home</button></a>
+    <div class="searchBarDiv">
+        <label for="searchBar">Search</label>
+        <input name="searchBar" type="text" ng-model="searchBar" ng-keypress="searchEnter($event, searchBar)">
+    </div>
+</div>
+
+<div class="col-md-12 pokedexTopbar blue"></div>
+<div class="col-md-12 pokedexTopbar red"></div>
+
+    <div ng-view></div>
+    
+    
+</div>        
 <script>
     
 </script>

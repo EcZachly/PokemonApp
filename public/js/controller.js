@@ -1,7 +1,21 @@
 var pokeAppController = angular.module("pokeAppController", []);
 var pokedexAppController = angular.module("pokedexAppController", []);
+var navBarController = angular.module("navBarController", []);
+var moveAppController = angular.module("moveAppController", []);
 
-
+navBarController.controller("navBarController", ["$scope", "$location",
+    function($scope, $location) {
+        $scope.searchEnter = function(keyEvent, val) {
+                if (keyEvent.which === 13) {
+//                    console.log(arguments)    
+                    $location.path("/pokedex/" + val)
+//                    console.log(JSON.stringify(keyEvent))
+//                    alert(keyEvent);
+//                    console.log(Object.keys(keyEvent))
+//                    console.log(Object.keys(keyEvent))
+                }
+            }
+    }])
 
 pokeAppController.controller("pokeAppController", ["$scope", "$http", "$routeParams",
     function ($scope, $http, $routeParams) {
@@ -117,7 +131,18 @@ pokeAppController.controller("pokeAppController", ["$scope", "$http", "$routePar
         }
 }]);
 
-
+moveAppController.controller("moveAppController", ["$scope", "$http", "$routeParams", "$location",
+    function($scope, $http, $routeParams, $location){
+        var name = $routeParams.name
+        var url = ""
+        if (name != undefined) {
+            url = "/moves/exactName/" + name
+        }
+        $http({url: url, method: "GET"}).success(function(data){
+            $scope.pokedexMove = data[0]
+            console.log(data[0])
+        })
+    }])
 
 pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$routeParams", "$location",
     function($scope, $http, $routeParams, $location){
@@ -136,6 +161,28 @@ pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$ro
                 $location.path('/all')
             }
             id = data[0].national_id
+            
+            if (data[0].evolutions != "") {
+                var evolutionInfo = data[0].evolutions
+//                console.log(evolutionInfo)
+                var i = 0
+                $scope.pokedexEntry.evolutionData = [];
+                $scope.pokedexEntry.evolutionsBool = "Evolutions";
+                evolutionInfo.forEach(function(){
+                    var tempName = "/pokemon/name/" + evolutionInfo[i].to
+//                    console.log(tempName)
+                    
+                    $http({url: tempName, method: "GET"}).success(function(data){
+                            $scope.pokedexEntry.evolutionData.push(data[0])
+//                            console.log(evolutionData)
+                            
+                        })
+                    
+                    i++
+                    
+                })
+                
+            }
             
             var nextID = parseInt(id) + 1
             if (nextID > 718) {
@@ -159,15 +206,6 @@ pokedexAppController.controller("pokedexAppController", ["$scope", "$http", "$ro
                 $scope.pokedexEntry.moves = data2
 
             })
-            $scope.searchEnter = function(keyEvent, val) {
-                if (keyEvent.which === 13) {
-//                    console.log(arguments)    
-                    $location.path("/pokedex/" + val)
-//                    console.log(JSON.stringify(keyEvent))
-//                    alert(keyEvent);
-//                    console.log(Object.keys(keyEvent))
-//                    console.log(Object.keys(keyEvent))
-                }
-            }
         })
     }]);
+

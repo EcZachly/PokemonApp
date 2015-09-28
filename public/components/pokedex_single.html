@@ -1,15 +1,3 @@
-
-<div class="col-md-12 pokedexNavbar">
-    <a ng-href="/views/index.html#/all"><button class="btn homeButton navButton">Home</button></a>
-    <div class="searchBarDiv">
-        <label for="searchBar">Search Pokemon</label>
-        <input name="searchBar" type="text" ng-model="searchBar" ng-keypress="searchEnter($event, searchBar)">
-    </div>
-</div>
-
-<div class="col-md-12 pokedexTopbar blue"></div>
-<div class="col-md-12 pokedexTopbar red"></div>
-
 <div class="navigationButtons col-md-12">
     <a ng-href="/views/index.html#/pokedexID/{{pokedexEntry.previousID}}"><button class="btn backwards navButton">{{pokedexEntry.previousPokemon}}</button></a>
     <a ng-href="/views/index.html#/pokedexID/{{pokedexEntry.nextID}}"><button class="btn forwards navButton">{{pokedexEntry.nextPokemon}}</button></a>
@@ -30,15 +18,27 @@
     <p class="infoText lead">HT   {{pokedexEntry.height}}</p>
     <p class="infoText lead">WT   {{pokedexEntry.weight}}</p>
     <audio id="cry" ng-src="{{pokedexEntry.cry}}" type="audio/mp3"> </audio>
-    <button class="btn button" onclick="playVid()">
-        Cry
-<!--    <span class="glyphicon glyphicon-play"></span>-->
-    </button>
+    <button class="btn button" onclick="playVid()">Cry</button>
 </div>
 
 <div class="col-md-12 pokedexDescription">
     <p class="description lead">{{pokedexEntry.description}}</p>
 </div>
+
+
+<div class="col-md-12 pokedexEvolutions">
+    <h2 class="display-1">{{pokedexEntry.evolutionsBool}}</h2>
+    <br>
+        <div class="pokemonEvolution col-md-3" ng-repeat="evolution in pokedexEntry.evolutionData">
+    <!--        <p class="">{{evolution.name}}</p>-->
+            <a ng-href="/views/index.html#/pokedexID/{{evolution.national_id}}">
+                <h4 class="thumbnailName">{{evolution.name}}</h4>
+                <img class="center-block thumbnailImage" ng-src="{{evolution.profile_image}}">
+            </a>
+
+        </div>
+</div>
+
 
 <br>
 <div class="col-md-12 movesetTable">
@@ -56,7 +56,7 @@
         <tbody>   
             <tr ng-repeat="move in pokedexEntry.moves | orderBy: ['learn_type','level','name']">
                 <th scope="row">{{$index + 1}}</th>
-                <td>{{move.name}}</td>
+                <td><a ng-href="/views/index.html#/move/{{move.name}}">{{move.name}}</a></td>
                 <td>{{move.learn_type}}</td>
                 <td>{{move.level}}</td>
             </tr>
@@ -78,5 +78,5 @@ function playVid() {
 </div>
 -->
 <div class="col-md-12 pokedexFooter">
-    <a ng-href="/views/index.html#/all">back</a>
+<!--    <a ng-href="/views/index.html#/all">back</a>-->
 </div>

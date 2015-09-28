@@ -1,0 +1,37 @@
+<div class="col-md-12 pokedexDescription">
+    <h1 class="display-1">#{{pokedexMove.id}} {{pokedexMove.name}}</h1>
+    <br>
+    <p class="description lead">{{pokedexMove.description}}</p>
+</div>
+
+<div class="pokedexMoveStats">
+    <h1 class="display-1">Stats</h1>
+    <p>Accuracy: <span>{{pokedexMove.accuracy}}</span></p>
+    <p>Power: <span>{{pokedexMove.power}}</span></p>
+    <p>PP: <span>{{pokedexMove.accuracy}}</span></p>
+</div>
+
+<div class="pokemonMoveList">
+    <h1 class="display-1">Learnable by these Pokemon</h1>
+<!--    <h2 class="display-1">Moveset</h2>-->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Pokemon Name</th>
+                <th>Learn Type</th>
+                <th>Level</th>
+            </tr>
+        </thead>
+        
+        <tbody>   
+            <tr ng-repeat="mon in pokedexMove.pokemon | orderBy: ['learn_type','level','name']">
+                
+                    <th scope="row">{{$index + 1}}</th>
+                    <td><a ng-href="/views/index.html#/pokedex/{{mon.name}}">{{mon.name}}</a></td>
+                    <td>{{mon.learn_type}}</td>
+                    <td>{{mon.level}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

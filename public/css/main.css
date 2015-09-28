@@ -195,13 +195,14 @@ h3 {
 
 .red {
     background: #E3350D;
-    height: 8px;
+    height: 3px;
+    margin-bottom: 20px;
 }
 
 .blue {
     background: #0274d8;
-    height: 4px;
-    margin-bottom: 1px;
+    height: 8px;
+    margin-bottom: 3px;
 }
 
 .green {
@@ -231,4 +232,29 @@ h3 {
     margin-left: 10px;
     padding: 5px;
     font-weight: 200;
+}
+
+.thumbnailImage {
+    width: 100%;
+}
+
+.thumbnailName {
+    text-align: center;
+}
+
+.pokedexEvolutions {
+    margin-bottom: 50px;
+}
+
+.pokemonEvolution {
+    margin-bottom: 30px;
+}
+
+.pageTitle {
+    text-align: center;
+}
+
+.listSettings {
+    padding-top: 25px;
+    padding-bottom: 25px;
 }

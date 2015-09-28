@@ -5,7 +5,9 @@
 var pokemonApp = angular.module('pokemonApp', [
    'ngRoute',
     'pokeAppController',
-    'pokedexAppController'
+    'pokedexAppController',
+    'navBarController',
+    'moveAppController'
 ]);
 
 
@@ -24,6 +26,10 @@ pokemonApp.config(["$routeProvider",
         when('/pokedexID/:id', {
           templateUrl: "/components/pokedex_single.html",
           controller: "pokedexAppController"
+      }).
+      when('/move/:name', {
+          templateUrl: "/components/move.html",
+          controller: "moveAppController"
       }).
         otherwise({
             redirectTo: "/all"

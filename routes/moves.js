@@ -14,6 +14,18 @@ var move = {
 			})
 			res.json(data)
 		})
+	},
+    getAllMoves : function(req,res){
+		moveCollection.find({}, function(err, data){
+			res.json(data)
+		})
+	},
+    getExactName : function(req, res){
+		var name = req.params.name
+        var regex = new RegExp(["^", name, "$"].join(""), "i");
+		moveCollection.find({"name":regex}, function(err, data){
+			res.json(data)
+		})
 	}
 }
 module.exports = move
