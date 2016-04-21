@@ -16,6 +16,13 @@ app.use(express.static('public'));
 app.use('/', require('./routes'));
 
 
+app.get('/', function(){
+
+})
+
+
+
+
 app.set('port', process.env.PORT || 3000);
 
 server = app.listen(app.get('port'), function() {
